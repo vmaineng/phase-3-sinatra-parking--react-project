@@ -7,3 +7,13 @@ class ApplicationController < Sinatra::Base
   end
 
 end
+
+
+#step 1: create migration tables
+#step 2: create seeds to work with data
+#step 3: create models and work in the relationships
+#step 4: create controllers for CRUD operations
+#CRUD operations = create open slot, read the open slots, update the open slots 
+# and delete any open slots
+
+
