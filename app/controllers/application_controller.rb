@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
 #find license plate
 
 post "/vehicles/find_by" do
-  license = Vehicle.find_by(license_plate: params[:vehicle])
+  license = Vehicle.find_or_create_by(license_plate: params[:vehicle])
   cars = license.parkedcars
   cars.to_json 
 end
