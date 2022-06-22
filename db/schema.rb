@@ -12,14 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_06_21_203809) do
 
-  create_table "parked_cars", force: :cascade do |t|
+  create_table "parkedcars", force: :cascade do |t|
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vehicle_id"
     t.integer "parkinglot_id"
-    t.index ["parkinglot_id"], name: "index_parked_cars_on_parkinglot_id"
-    t.index ["vehicle_id"], name: "index_parked_cars_on_vehicle_id"
+    t.datetime "arrival"
+    t.datetime "departure"
+    t.index ["parkinglot_id"], name: "index_parkedcars_on_parkinglot_id"
+    t.index ["vehicle_id"], name: "index_parkedcars_on_vehicle_id"
   end
 
   create_table "parking_lots", force: :cascade do |t|
