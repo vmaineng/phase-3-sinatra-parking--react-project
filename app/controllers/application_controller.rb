@@ -11,8 +11,8 @@ post "/vehicles/find_by" do
 end
 
 #create a new reservation - rough draft
-post "/vehicles" do
-license = Vehicle.create(
+post "/parkedcars" do
+license = Parkedcar.create(
   price: params[:price],
   arrival: params[:arrival],
   departure: params[:departure]
@@ -27,7 +27,7 @@ license.destroy
 license.to_json
 end
 
-#update a reservation - rough draft
+#update a reservation - rough draft; need to add in arrival and depature
 patch "/parkedcars/:id" do
   license = Parkedcar.find(params[:id])
   license.update(
