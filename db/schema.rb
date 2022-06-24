@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_203809) do
     t.index ["vehicle_id"], name: "index_parkedcars_on_vehicle_id"
   end
 
-  create_table "parking_lots", force: :cascade do |t|
+  create_table "parkinglots", force: :cascade do |t|
     t.integer "slot"
     t.integer "level_1"
   end

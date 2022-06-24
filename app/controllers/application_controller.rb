@@ -12,13 +12,22 @@ end
 
 #create a new reservation - rough draft
 post "/parkedcars" do
+  car = Vehicle.find_or_create_by(license_plate: params[:vehicle])
+  space = Parkinglot.all.sample
 license = Parkedcar.create(
+  vehicle: car,
+  parkinglot: space,
   price: params[:price],
   arrival: params[:arrival],
   departure: params[:departure]
 )
 license.to_json
 end
+
+#FIGURE OUT WHY THE CHECK VEHICLE DOES NOT
+#FIND THE NEW CAR RESERVATION
+#DO ANOTHER POST TO CARS TO FIND_OR_CREATE_BY?
+#It does not have vehicle_id nor a parking_lot id
 
 #delete a reservation - rough draft
 delete "/parkedcars/:id" do
