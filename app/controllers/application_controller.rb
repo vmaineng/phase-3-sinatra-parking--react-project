@@ -21,31 +21,43 @@ license.to_json
 end
 
 #delete a reservation - rough draft
-delete "/vehicles/:id" do
-  license = Vehicle.find(params[:id])
+delete "/parkedcars/:id" do
+  license = Parkedcar.find(params[:id])
 license.destroy
 license.to_json
 end
+
+#browser can only send a get request; we use postman for other request
 
 #update a reservation - rough draft; need to add in arrival and depature
 patch "/parkedcars/:id" do
   license = Parkedcar.find(params[:id])
   license.update(
-    price: params[:price]
+    price: params[:price],
+    arrival: params[:arrival],
+  departure: params[:departure]
   )
-  license.to_json
+  #license.to_json
+  #options = get_time_format
+  license.to_json(get_time_format)
 end
 
 get "/vehicles" do 
   data = Vehicle.all.to_json
  end
  
-
-get "/parked_cars" do 
- data = ParkedCar.all.to_json
+get "/parkedcars" do
+  data = Parkedcar.all.to_json
 end
 
+get "/parking_lots" do
+  data = ParkingLot.all.to_json
+end
 
+private
+def get_time_format()
+  { methods: [:formatted_time] }
+end
   # get "/" do
   #   { message: "Good luck with your project!" }.to_json
   # end
